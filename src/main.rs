@@ -1,3 +1,8 @@
+extern crate base64;
+
+use base64::{encode, decode};
+use std::env;
+
 #[derive(Clone, Copy, PartialEq, Eq)]
 pub enum Algorithm {
     HS256,
@@ -19,7 +24,7 @@ pub struct Header {
 pub struct Token<T> {
     header: Header,
     claims: T,
-    
+    signature: String,
 }
 
 pub struct Claims {
@@ -32,4 +37,11 @@ pub struct Claims {
     jti: String,
 }
 
-fn main() {}
+fn main() {
+    let args: Vec<String> = env::args().collect();
+
+    let file = &args[1];
+
+    let decode_jwt = &decode(file).unwrap()[..];
+    println!("{:?}", decode_jwt);
+}
