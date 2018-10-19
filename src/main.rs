@@ -38,7 +38,10 @@ impl Claims {
 
 impl Header {
     fn new() -> Self {
-        Default::default()
+        Header {
+            typ: String::from(""),
+            alg: String::from(""),
+        }
     }
 }
 
