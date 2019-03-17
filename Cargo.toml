@@ -2,6 +2,9 @@
 name = "jwt-decoder"
 version = "0.1.0"
 authors = ["Jean-Marcel Belmont <jbelmont@foodlogiq.com>"]
+description = "A small command line utility to parse out json web token."
+edition = "2018"
+license = "MIT OR Apache-2.0"
 
 [dependencies]
 base64 = "0.9.3"
