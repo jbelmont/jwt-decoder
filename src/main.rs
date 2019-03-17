@@ -6,6 +6,10 @@ extern crate serde_json;
 extern crate serde_derive;
 
 use std::env;
+use std::process;
+
+use jwt_decoder;
+use jwt_decoder::Config;
 
 #[derive(Default, Debug, Clone, Serialize, Deserialize)]
 pub struct Header {
@@ -47,6 +51,11 @@ impl Header {
 
 fn main() {
     let args: Vec<String> = env::args().collect();
+
+    let config = Config::new(&args).unwrap_or_else(|err| {
+        eprintln!("Problem parsing arguments: {}", err);
+        process::exit(1);
+    });
 
     let mut header = Header::new();
     let mut claims = Claims::new();
