@@ -60,7 +60,7 @@ fn main() {
     let mut header = Header::new();
     let mut claims = Claims::new();
 
-    let jwt_string: Vec<_> = args[1].split(".").collect();
+    let jwt_string: Vec<_> = config.jwt_string.split(".").collect();
 
     let mut counter = 0;
     for part in jwt_string {
